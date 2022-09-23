@@ -1,0 +1,81 @@
+﻿@page "/dynamicform"
+@using BlazorDynamicForm.Shared
+
+<h1>Dynamic form</h1>
+
+@if (form == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <tbody>
+            @for (int i = 0; i < form.Elements.Count(); i++)
+            {
+                <tr>
+                    <td>@form.Elements[i].Label</td>
+                    @switch (form.Elements[i].ElementType)
+                    {
+                        case "TextInput":
+                            {
+                                TextInput txt = form.Elements[i] as TextInput;
+                                if (!ElementValues.ContainsKey(txt.Name))
+                                    ElementValues.Add(txt.Name, txt.Value);
+
+                                <td>
+                                    <TextInput Name="@txt.Name"
+                                               PlaceHolder="@(txt.PlaceHolder)"
+                                               Value="@(txt.Value)" />
+                                </td>
+
+                                break;
+                            }
+                        case "RadioButton":
+                            {
+                                RadioButton rdb = form.Elements[i] as RadioButton;
+                                <td>
+                                    <RadioButton Name="@rdb.Name" Options="@(rdb.Options)" />
+                                </td>
+                                break;
+                            }
+                        default:
+                            {
+                                <td>Unknow control</td>
+                                break;
+                            }
+                    }
+                </tr>
+            }
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary" @onclick="Submit">Submit</button>
+                </td>
+            </tr>
+            @if (!string.IsNullOrEmpty(strForm))
+            {
+                <tr>
+                    <td colspan="2">
+                        <p>Form: @strForm</p>
+                    </td>
+                </tr>
+            }
+            @if (!string.IsNullOrWhiteSpace(serverRequest))
+            {
+                <tr>
+                    <td colspan="2">
+                        <p>Request from server: @serverRequest</p>
+                    </td>
+                </tr>
+            }
+            @if (!string.IsNullOrWhiteSpace(serverResponse))
+            {
+                <tr>
+                    <td colspan="2">
+                        <p>Response from server: @serverResponse</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

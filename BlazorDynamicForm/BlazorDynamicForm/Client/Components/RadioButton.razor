@@ -1,0 +1,14 @@
+﻿@foreach (var option in @Options)
+{
+    <input type="radio" id="@option.Key" name="@Name" value="@option.Key">
+    <label for="male">@option.Value</label>
+    <br>
+}
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public Dictionary<string, string> Options { get; set; }
+}
