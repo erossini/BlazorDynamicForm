@@ -1,5 +1,7 @@
 # Dynamic Form with Blazor
-This is an example how to create a dynamic form with Blazor
+I show you how to create form dynamically with Blazor without using DataAnnotation but only simple classes. My goal is to create a survey dynamically at run-time based on a Json file. I spent a lot of time to architect this code and I have created a component that allows you to create the form for the survey and validate the structure of the form and the result. Also, I added the opportunity to insert simple condition to display or not some options or content.
+
+For testing, I have created a website with the latest version available on [SurveyUI](https://survey.puresourcecode.com/). For more details, you can read my post "[Create form dynamically with Blazor](https://www.puresourcecode.com/dotnet/blazor/create-form-dynamically-with-blazor/)" on [PureSourceCode.com](https://www.puresourcecode.com).
 
 ![Dynamic Form with Blazor in action](https://github.com/erossini/BlazorDynamicForm/blob/main/Screenshots/blazor-dynamicform.gif?raw=true)
 
