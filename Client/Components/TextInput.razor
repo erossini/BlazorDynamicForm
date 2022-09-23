@@ -1,0 +1,13 @@
+﻿<input type="text" name="@Name" placeholder="@PlaceHolder"
+       @bind="@(Hosted.Client.Pages.DynamicForm.ElementValues[Name])">
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string PlaceHolder { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+}
